@@ -7,7 +7,6 @@ import QtQuick.Layouts
 Dialog {
     id: popupDialog
     anchors.centerIn: parent
-    opacity: 0.9
     padding: 20
     property alias text: textField.text
     property bool shouldTimeOut: true
@@ -23,18 +22,21 @@ Dialog {
         anchors.centerIn: parent
         spacing: 20
 
-        Text {
+        Label {
             id: textField
             width: Math.min(1024, implicitWidth)
             height: Math.min(600, implicitHeight)
             anchors.verticalCenter: shouldShowBusy ? busyIndicator.verticalCenter : parent.verticalCenter
             horizontalAlignment: Text.AlignLeft
             verticalAlignment: Text.AlignVCenter
+            textFormat: Text.StyledText
             wrapMode: Text.WordWrap
             color: theme.textColor
+            linkColor: theme.linkColor
             Accessible.role: Accessible.HelpBalloon
             Accessible.name: text
             Accessible.description: qsTr("Reveals a shortlived help balloon")
+            onLinkActivated: function(link) { Qt.openUrlExternally(link) }
         }
 
         MyBusyIndicator {
@@ -50,7 +52,7 @@ Dialog {
 
     background: Rectangle {
         anchors.fill: parent
-        color: theme.backgroundDarkest
+        color: theme.containerBackground
         border.width: 1
         border.color: theme.dialogBorder
         radius: 10
