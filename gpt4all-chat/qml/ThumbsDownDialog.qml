@@ -7,10 +7,9 @@ import download
 import network
 import llm
 
-Dialog {
+MyDialog {
     id: thumbsDownDialog
     modal: true
-    opacity: 0.9
     padding: 20
 
     Theme {
@@ -39,50 +38,34 @@ Dialog {
                 anchors.verticalCenter: img.verticalCenter
                 text: qsTr("Please edit the text below to provide a better response. (optional)")
                 color: theme.textColor
+                font.pixelSize: theme.fontSizeLarge
             }
         }
 
         ScrollView {
             clip: true
-            height: 300
+            height: 120
             width: parent.width
-            ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+            ScrollBar.vertical.policy: ScrollBar.AsNeeded
             ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
-            TextArea {
+            MyTextArea {
                 id: thumbsDownNewResponse
-                color: theme.textColor
-                padding: 20
-                wrapMode: Text.Wrap
-                font.pixelSize: theme.fontSizeLarge
                 placeholderText: qsTr("Please provide a better response...")
-                placeholderTextColor: theme.backgroundLightest
-                background: Rectangle {
-                    color: theme.backgroundLighter
-                    radius: 10
-                }
             }
         }
-    }
-
-    background: Rectangle {
-        anchors.fill: parent
-        color: theme.backgroundDarkest
-        border.width: 1
-        border.color: theme.dialogBorder
-        radius: 10
     }
 
     footer: DialogButtonBox {
         padding: 20
         alignment: Qt.AlignRight
         spacing: 10
-        MyButton {
+        MySettingsButton {
             text: qsTr("Submit")
             Accessible.description: qsTr("Submits the user's response")
             DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
         }
-        MyButton {
+        MySettingsButton {
             text: qsTr("Cancel")
             Accessible.description: qsTr("Closes the response dialog")
             DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
