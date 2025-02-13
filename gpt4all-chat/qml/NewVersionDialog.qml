@@ -7,25 +7,17 @@ import download
 import network
 import llm
 
-Dialog {
+MyDialog {
     id: newVerionDialog
     anchors.centerIn: parent
     modal: true
-    opacity: 0.9
     width: contentItem.width
     height: contentItem.height
     padding: 20
+    closeButtonVisible: false
 
     Theme {
         id: theme
-    }
-
-    background: Rectangle {
-        anchors.fill: parent
-        color: theme.backgroundDarkest
-        border.width: 1
-        border.color: theme.dialogBorder
-        radius: 10
     }
 
     Item {
@@ -39,17 +31,20 @@ Dialog {
             anchors.left: parent.left
             topPadding: 20
             bottomPadding: 20
-            text: qsTr("New version is available:")
-            color: theme.textColor
+            text: qsTr("New version is available")
+            color: theme.titleTextColor
+            font.pixelSize: theme.fontSizeLarge
+            font.bold: true
         }
 
-        MyButton {
+        MySettingsButton {
             id: button
             anchors.left: label.right
             anchors.leftMargin: 10
             anchors.verticalCenter: label.verticalCenter
             padding: 20
             text: qsTr("Update")
+            font.pixelSize: theme.fontSizeLarge
             Accessible.description: qsTr("Update to new version")
             onClicked: {
                 if (!LLM.checkForUpdates())

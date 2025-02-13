@@ -27,15 +27,15 @@ Unfortunately, no for three reasons:
 
 # What is being done to make them more compatible?
 
-A few things. Number one, we are maintaining compatibility with our current model zoo by way of the submodule pinning. However, we are also exploring how we can update to newer versions of llama.cpp without breaking our current models. This might involve an additional magic header check or it could possibly involve keeping the currently pinned submodule and also adding a new submodule with later changes and differienting them with namespaces or some other manner. Investigations continue.
+A few things. Number one, we are maintaining compatibility with our current model zoo by way of the submodule pinning. However, we are also exploring how we can update to newer versions of llama.cpp without breaking our current models. This might involve an additional magic header check or it could possibly involve keeping the currently pinned submodule and also adding a new submodule with later changes and differentiating them with namespaces or some other manner. Investigations continue.
 
 # What about GPU inference?
 
 In newer versions of llama.cpp, there has been some added support for NVIDIA GPU's for inference. We're investigating how to incorporate this into our downloadable installers.
 
-# Ok, so bottom line... how do I make my model on huggingface compatible with GPT4All ecosystem right now?
+# Ok, so bottom line... how do I make my model on Hugging Face compatible with GPT4All ecosystem right now?
 
-1. Check to make sure the huggingface model is available in one of our three supported architectures
+1. Check to make sure the Hugging Face model is available in one of our three supported architectures
 2. If it is, then you can use the conversion script inside of our pinned llama.cpp submodule for GPTJ and LLAMA based models
 3. Or if your model is an MPT model you can use the conversion script located directly in this backend directory under the scripts subdirectory 
 
